@@ -35,33 +35,37 @@ You may assume accurate input values. You may NOT use a loop.
 """
 # Author: Andrew Tkacs
 
-def find_high_low(input_list):
-    # Check if the list has at least two unique numbers
-    unique_numbers = set(input_list)
+# This program takes input from the user for 5 unique words, constructs a list, and then displays another list where each index corresponds to the length of the word at that index.
+
+# Function to get input and construct the list
+
+def get_user_input():
+    word_list = []  # empty list to store words
     
-    if len(unique_numbers) < 2:
-        return "error: list does not meet specifications"
+    # Get input from the user for 5 unique words
+
+    word_list.append(input("Enter a unique word: "))  # Using append to add each word to the list
+    word_list.append(input("Enter another unique word: "))
+    word_list.append(input("Enter another unique word: "))
+    word_list.append(input("Enter another unique word: "))
+    word_list.append(input("Enter the last unique word: "))
     
-    # Find the highest and lowest values in the list
-    highest_value = max(input_list)
-    lowest_value = min(input_list)
+    return word_list
+
+# Function to display a list of word lengths
+
+def display_word_lengths(word_list):
+    # Create a new list where each index corresponds to the length of the word at that index
+    length_list = [len(word) for word in word_list]
     
-    return highest_value, lowest_value
+    # Display the list of word lengths
+    print("List of word lengths:", length_list)
 
+# Main program
 
-# test
-test_list_1 = [4, 7, 2, 9, 1]
-result_1 = find_high_low(test_list_1)
-print("Test 1 Result:", result_1)
-
-test_list_2 = [3, 3, 3, 3]
-result_2 = find_high_low(test_list_2)
-print("Test 2 Result:", result_2)
-
-test_list_3 = [5]
-result_3 = find_high_low(test_list_3)
-print("Test 3 Result:", result_3)
-
-test_list_4 = []
-result_4 = find_high_low(test_list_4)
-print("Test 4 Result:", result_4)
+if __name__ == "__main__":
+    # Get user input and construct the list
+    user_words = get_user_input()
+    
+    # Display the list of word lengths
+    display_word_lengths(user_words)

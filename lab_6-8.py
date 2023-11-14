@@ -33,35 +33,36 @@ You may assume accurate input values. You may NOT use a loop.
 
 
 """
+
 # Author: Andrew Tkacs
 
-def find_high_low(input_list):
-    # Check if the list has at least two unique numbers
-    unique_numbers = set(input_list)
+# Function to get input
+def get_user_input():
+    num_list = []  # Initialize an empty list to store numeric values
     
-    if len(unique_numbers) < 2:
-        return "error: list does not meet specifications"
+    # Get input from the user for 3 numeric values
+    num_list.append(float(input("Enter a numeric value: ")))  # Using float to handle decimal inputs
+    num_list.append(float(input("Enter another numeric value: ")))
+    num_list.append(float(input("Enter the last numeric value: ")))
     
-    # Find the highest and lowest values in the list
-    highest_value = max(input_list)
-    lowest_value = min(input_list)
+    return num_list
+
+# Function to determine and display the nature of the numbers in the list
+def display_number_classification(num_list):
+    # Check if all numbers in the list are even
+    if all(num % 2 == 0 for num in num_list):
+        print("even")
+    # Check if all numbers in the list are odd
+    elif all(num % 2 != 0 for num in num_list):
+        print("odd")
+    # If the numbers in the list are both even and odd
+    else:
+        print("mixed")
+
+# Main program
+if __name__ == "__main__":
+    # Get user input and construct the list
+    user_numbers = get_user_input()
     
-    return highest_value, lowest_value
-
-
-# test
-test_list_1 = [4, 7, 2, 9, 1]
-result_1 = find_high_low(test_list_1)
-print("Test 1 Result:", result_1)
-
-test_list_2 = [3, 3, 3, 3]
-result_2 = find_high_low(test_list_2)
-print("Test 2 Result:", result_2)
-
-test_list_3 = [5]
-result_3 = find_high_low(test_list_3)
-print("Test 3 Result:", result_3)
-
-test_list_4 = []
-result_4 = find_high_low(test_list_4)
-print("Test 4 Result:", result_4)
+    # Display the string based on the nature of the numbers in the list
+    display_number_classification(user_numbers)
